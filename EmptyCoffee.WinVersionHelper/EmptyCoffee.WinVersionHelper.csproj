@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A package for identifying Windows Versions using the Environment.OSVersion API exposed in System.Windows on Windows operating system environments starting with Windows XP.</Description>
+    <Authors>EmptyCoffee.com Jim Pusateri</Authors>
+    <Company>EmptyCoffee.com</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://github.com/Elroyman/EmptyCoffee.WinVersionHelper/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Elroyman/EmptyCoffee.WinVersionHelper</PackageProjectUrl>
+    <Copyright />
   </PropertyGroup>
 
 </Project>
