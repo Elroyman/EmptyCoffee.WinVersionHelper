@@ -1,0 +1,1 @@
+# EmptyCoffee.WinVersionHelper
