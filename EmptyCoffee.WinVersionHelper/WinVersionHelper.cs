@@ -29,21 +29,15 @@ namespace System.Windows
         // Results are to a static field on first call so it only performs actualy computation once.   
         //
 
-        static readonly Boolean windows2000OrGreater;
-        static readonly Boolean windowsXPOrGreater;
-        static readonly Boolean windowsXP64OrGreater;
-        static readonly Boolean windowsServer2003OrGreater;
-        static readonly Boolean windowsVistaOrGreater;
-        static readonly Boolean windowsServer2008OrGreater;
-        static readonly Boolean windowsServer2008R2OrGreater;
-        static readonly Boolean windows7OrGreater;
-        static readonly Boolean windowsServer2012OrGreater;
-        static readonly Boolean windows8OrGreater;
-        static readonly Boolean windowsServer2012R2OrGreater;
-        static readonly Boolean windows8Point1OrGreater;
-        static readonly Boolean windows10OrGreater;
-        static readonly Boolean windowsServer2016OrGreater;
-        static readonly Boolean unmanifestedWindows8OrGreater;
+        static readonly bool windows2000OrGreater;
+        static readonly bool windowsXPOrGreater;
+        static readonly bool windowsXP64OrGreater;
+        static readonly bool windowsVistaOrGreater;
+        static readonly bool windows7OrGreater;
+        static readonly bool windows8OrGreater;
+        static readonly bool windows8Point1OrGreater;
+        static readonly bool windows10OrGreater;
+
 
         static WinVersionHelper()
         {
@@ -54,34 +48,35 @@ namespace System.Windows
             if (!windows10OrGreater)
             {
                 windows8Point1OrGreater = IsWindowsVersionOrGreater(6, 3);
-
-                if (!windows8Point1OrGreater)
-                {
-                    windows8OrGreater = IsWindowsVersionOrGreater(6, 2);
-                    if (!windows8OrGreater)
-                    {
-                        windows7OrGreater = IsWindowsVersionOrGreater(6, 1);
-                        if (!windows7OrGreater)
-                        {
-                            windowsVistaOrGreater = IsWindowsVersionOrGreater(6, 0);
-                            if (!windowsVistaOrGreater)
-                            {
-                                windowsXP64OrGreater = IsWindowsVersionOrGreater(5, 2);
-                                if (!windowsXP64OrGreater)
-                                {
-                                    windowsXPOrGreater = IsWindowsVersionOrGreater(5, 1);
-                                    if (!windowsXPOrGreater)
-                                    {
-                                        windows2000OrGreater = IsWindowsVersionOrGreater(5, 1);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
-
+            else if (!windows8Point1OrGreater)
+            {
+                windows8OrGreater = IsWindowsVersionOrGreater(6, 2);
+            }
+            else if (!windows8OrGreater)
+            {
+                windows7OrGreater = IsWindowsVersionOrGreater(6, 1);
+            }
+            else if (!windows7OrGreater)
+            {
+                windowsVistaOrGreater = IsWindowsVersionOrGreater(6, 0);
+            }
+            else if (!windowsVistaOrGreater)
+            {
+                windowsXP64OrGreater = IsWindowsVersionOrGreater(5, 2);
+            }
+            else if (!windowsXP64OrGreater)
+            {
+                windowsXPOrGreater = IsWindowsVersionOrGreater(5, 1);
+            }
+            else if (!windowsXPOrGreater)
+            {
+                windows2000OrGreater = IsWindowsVersionOrGreater(5, 1);
+            }
         }
+    
+
+          
 
         /// <summary>
         /// Tests the provided major and minor version against the Environment.OSVersion.Version of the system.
@@ -99,7 +94,7 @@ namespace System.Windows
         /// <param name="minorVersion">The minor OS version number.</param>
         /// <returns>True if the specified version matches, or is greater than, the version of the
         /// current Windows OS; otherwise, false.</returns>
-        public static Boolean IsWindowsVersionOrGreater(int majorVersion, int minorVersion)
+        public static bool IsWindowsVersionOrGreater(int majorVersion, int minorVersion)
         {
             // Validate arguments
             if (majorVersion < 5)
@@ -123,40 +118,28 @@ namespace System.Windows
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows 2000
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindows2000OrGreater()
-        {
-            return windows2000OrGreater;
-        }
+        public static bool IsWindows2000OrGreater => windows2000OrGreater; 
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows XP version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows XP
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsXPOrGreater()
-        {
-            return windowsXPOrGreater;
-        }
+        public static bool IsWindowsXPOrGreater => windowsXPOrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows XP(64) version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows XP(64)
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsXP64OrGreater()
-        {
-            return windowsXP64OrGreater;
-        }
+        public static bool IsWindowsXP64OrGreater => windowsXP64OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2003 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Server 2003
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2003OrGreater()
-        {
-            return windowsXP64OrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsWindowsServer2003OrGreater => windowsXP64OrGreater;//this matches based on documentation 
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Vista
@@ -164,80 +147,57 @@ namespace System.Windows
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Vista
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsVistaOrGreater()
-        {
-            return windowsVistaOrGreater;
-        }
+        public static bool IsWindowsVistaOrGreater => windowsVistaOrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2008 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Server 2008
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2008OrGreater()
-        {
-            return windowsVistaOrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsWindowsServer2008OrGreater => windowsVistaOrGreater;//this matches based on documentation 
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2008 R2 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Server 2008 R2
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2008R2OrGreater()
-        {
-            return windows7OrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsWindowsServer2008R2OrGreater => windows7OrGreater;//this matches based on documentation 
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows 7 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows 7
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindows7OrGreater()
-        {
-            return windows7OrGreater;
-        }
+        public static bool IsWindows7OrGreater => windows7OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2012 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Server 2012
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2012OrGreater()
-        {
-            return windows8OrGreater;
-        }
+        public static bool IsWindowsServer2012OrGreater => windows8OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows 8 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows 8
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindows8OrGreater()
-        {
-            return windows8OrGreater;
-        }
+        public static bool IsWindows8OrGreater => windows8OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2012 R2 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, the Windows Server 2012 R2
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2012R2OrGreater()
-        {
-            return windows8Point1OrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsWindowsServer2012R2OrGreater => windows8Point1OrGreater; //this matches based on documentation
+
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows 8.1
         /// version.
         /// </summary>
         ///  <returns>True if the current OS version matches, or is greater than, the Windows 8.1
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindows8Point1OrGreater()
-        {
-            return windows8Point1OrGreater;
-        }
+        public static bool IsWindows8Point1OrGreater => windows8Point1OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows 10
@@ -245,30 +205,21 @@ namespace System.Windows
         /// </summary>
         ///  <returns>True if the current OS version matches, or is greater than, the Windows 10
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindows10OrGreater()
-        {
-            return windows10OrGreater;
-        }
+        public static bool IsWindows10OrGreater => windows10OrGreater;
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, the Windows Server 2016 version.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, Windows Server 2016
         /// version; otherwise, false.</returns>
-        public static Boolean IsWindowsServer2016OrGreater()
-        {
-            return windows10OrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsWindowsServer2016OrGreater => windows10OrGreater; //matches per documentation
 
         /// <summary>
         /// Indicates if the current OS version matches, or is greater than, Windows 8 but the application is not properly targeted to Operating System(s) versioned higher than 8.
         /// </summary>
         /// <returns>True if the current OS version matches, or is greater than, Windows 8 and that isn't properly targeted to a post Windows 8 OS version.
         /// ; otherwise, false.</returns>
-        public static Boolean IsUnmanifestTargetedWindows8OrGreater()
-        {
-            return windows8OrGreater; //this matches based on documentation https://msdn.microsoft.com/en-us/library/windows/desktop/ms724832(v=vs.85).aspx
-        }
+        public static bool IsUnmanifestTargetedWindows8OrGreater => windows8OrGreater; //all version past 8 currently match the same version per documentation
 
     }
 }
