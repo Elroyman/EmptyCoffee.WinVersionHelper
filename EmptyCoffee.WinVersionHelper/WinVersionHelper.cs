@@ -55,8 +55,9 @@ namespace System.Windows
                 throw new ArgumentOutOfRangeException("minorVersion");
             }
 
-            // Verify version info
-            return Environment.OSVersion.Version.Major >= majorVersion && Environment.OSVersion.Version.Minor >= minorVersion;
+            // Verify version inf
+            return Environment.OSVersion.Version.Major >= majorVersion || (Environment.OSVersion.Version.Major == majorVersion && Environment.OSVersion.Version.Minor >= minorVersion);
+            
         }
 
         /// <summary>
