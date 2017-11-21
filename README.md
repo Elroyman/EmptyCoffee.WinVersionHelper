@@ -11,7 +11,7 @@ which works in many situations but which does not function in all situations whe
 The whole library is contained in a single static class which can be called like:
 
 
-            if (WinVersionHelper.IsWindows8OrGreater())
+            if (WinVersionHelper.IsWindows8OrGreater)
             {
                 //do something version specific
             } 

@@ -9,6 +9,8 @@
     <PackageLicenseUrl>https://github.com/Elroyman/EmptyCoffee.WinVersionHelper/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Elroyman/EmptyCoffee.WinVersionHelper</PackageProjectUrl>
     <Copyright />
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>Improved version detection</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
